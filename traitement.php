@@ -11,7 +11,7 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "Sorry, there was an error uploading your file.";
 }
 
-// Chargement du fichier Excel
+// Chargement du fichier Excel 
 $objPHPExcel = PHPExcel_IOFactory::load("files/upload/$x");
  
 /**
