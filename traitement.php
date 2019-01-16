@@ -31,9 +31,7 @@ foreach($sheet->getRowIterator() as $row) {
  $content_array[] = $temp_array;
 }
 
-echo "<pre>";
-print_r($content_array);
-echo "</pre>";
+
 
 $objPHPExcel = new PHPExcel(); // Create new PHPExcel object
 
@@ -86,4 +84,5 @@ for($i=0;$i<count($content_array);$i++)
 
 $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 $objWriter->save("files/download/$x");
+echo "<a href ='files/download/$x'>download here </a>";
 ?>
