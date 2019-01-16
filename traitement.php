@@ -2,16 +2,17 @@
 $date = date("Y_m_d_H_i_s");
 require_once './phpexcel/Classes/PHPExcel/IOFactory.php';
 $target_dir = "files/";
-$target_file = $target_dir . "upload/index-$date.xlsx";
+$x = $_FILES["fileToUpload"]["name"];
+$target_file = $target_dir . "upload/$x";
 $uploadOk = 1;
 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 } else {
     echo "Sorry, there was an error uploading your file.";
 }
- 
+
 // Chargement du fichier Excel
-$objPHPExcel = PHPExcel_IOFactory::load("files/upload/index-$date.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("files/upload/$x");
  
 /**
 * récupération de la première feuille du fichier Excel
@@ -83,6 +84,6 @@ for($i=0;$i<count($content_array);$i++)
 }
 }
 
-            $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-$objWriter->save("files/download/index-$date.xlsx");
+$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+$objWriter->save("files/download/$x");
 ?>
